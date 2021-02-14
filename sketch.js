@@ -1,10 +1,9 @@
 var r, monkey , monkey_running, invisibleGround, gameOverMonkey;
-var banana ,bananaImage, obstacle, obstacleImage1, obstacleImage2,     obstacleImage3, cryingMonkeyImg;
+var banana ,bananaImage, obstacle, obstacleImage1, obstacleImage2, obstacleImage3, cryingMonkeyImg;
 var bgrd1, bgrd2, bgrdImg;
 var score = 0;
 var score1 = 0; 
 var survivalTime = 0;
-var lifeCount = 5;
 var jumpingYPass = 320;
 var bananasGroup, obstaclesGroup;
 var gameState = "play";
@@ -90,26 +89,22 @@ function draw()
   {
     obstaclesGroup.destroyEach();
     monkey.scale = 0.1;
-    lifeCount = lifeCount - 1;
     score1 = 0;
     rockHitSound.play();
-    if(lifeCount === 0)
-    {
-      gameOverSound.play();
-      gameState = "end";
-    }
+    gameOverSound.play();
+    gameState = "end";
   }  
   switch(score1) {
-      case 10: monkey.scale = 0.12;
-               jumpingYPass = 318; 
+      case 2: monkey.scale = 0.12;
+               jumpingYPass = 318;
                break;   
-      case 20: monkey.scale = 0.14;
+      case 4: monkey.scale = 0.14;
                jumpingYPass = 312; 
                break;
-      case 30: monkey.scale = 0.16;
+      case 6: monkey.scale = 0.16;
                jumpingYPass = 305;
                break;
-      case 40: monkey.scale = 0.18;
+      case 8: monkey.scale = 0.18;
                jumpingYPass = 299;
                break;         
       default: break;
@@ -142,7 +137,6 @@ function draw()
   textSize(15);
   textFont("Segoe Print");  
   text("Score: " + score, 20, 20);
-  text("Lives left: " + lifeCount, 125, 20);  
   survivalTime = Math.ceil(frameCount/frameRate());  
   text("Survival Time: " + survivalTime, 250, 20); 
   }  
